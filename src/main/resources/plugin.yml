@@ -1,0 +1,4 @@
+name: Court
+version: '1.0-SNAPSHOT'
+main: com.ahsmus.court.Court
+api-version: '1.7.10'
