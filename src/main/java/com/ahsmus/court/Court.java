@@ -4,6 +4,9 @@ import com.ahsmus.court.commands.ArenaCommand;
 import com.ahsmus.court.core.CourtPlayer;
 import com.ahsmus.court.events.*;
 import com.ahsmus.court.managers.ArenaManager;
+import com.ahsmus.court.managers.KitManager;
+import com.ahsmus.court.managers.MenuManager;
+import com.ahsmus.court.managers.QueueManager;
 import lombok.Getter;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -15,11 +18,18 @@ public final class Court extends JavaPlugin {
 
     public List<CourtPlayer> players;
     public ArenaManager arenaManager;
+    public MenuManager menuManager;
+    public KitManager kitManager;
+    public QueueManager queueManager;
 
     @Override
     public void onEnable() {
         players = new ArrayList<>();
-        arenaManager = new ArenaManager();
+        arenaManager = new ArenaManager(this);
+        menuManager = new MenuManager(this);
+        kitManager = new KitManager(this);
+        queueManager = new QueueManager(this);
+
         registerEvents();
     }
 

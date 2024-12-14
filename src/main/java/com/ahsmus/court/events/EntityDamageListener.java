@@ -2,13 +2,12 @@ package com.ahsmus.court.events;
 
 import com.ahsmus.court.Court;
 import com.ahsmus.court.core.CourtPlayer;
-import com.ahsmus.court.core.PlayerState;
+import com.ahsmus.court.core.enums.PlayerState;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.entity.EntityDamageEvent;
 
 public class EntityDamageListener implements Listener {

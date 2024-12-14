@@ -1,16 +1,21 @@
 package com.ahsmus.court.managers;
 
+import com.ahsmus.court.Court;
 import com.ahsmus.court.core.Arena;
-import com.ahsmus.court.core.ArenaState;
+import com.ahsmus.court.core.enums.ArenaState;
+import lombok.Getter;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Getter
 public class ArenaManager {
 
+    private final Court plugin;
     public List<Arena> arenas;
 
-    public ArenaManager() {
+    public ArenaManager(Court plugin) {
+        this.plugin = plugin;
         arenas = new ArrayList<>();
     }
 

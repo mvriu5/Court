@@ -1,6 +1,7 @@
 package com.ahsmus.court.events;
 
 import com.ahsmus.court.Court;
+import com.ahsmus.court.core.CourtPlayer;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -18,9 +19,14 @@ public class PlayerLeaveListener implements Listener {
     public void onPlayerLeave(PlayerQuitEvent event) {
         Player player = event.getPlayer();
 
-        plugin.players.stream()
+        CourtPlayer courtPlayer = plugin.getPlayers().stream()
             .filter(p -> p.player.getUniqueId().equals(player.getUniqueId()))
             .findFirst()
-            .ifPresent(plugin.players::remove);
+            .orElse(null);
+
+        if (courtPlayer == null) return;
+
+        plugin.getPlayers().remove(courtPlayer);
+        plugin.getQueueManager().removePlayer(courtPlayer);
     }
 }

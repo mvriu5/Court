@@ -1,4 +1,4 @@
-package com.ahsmus.court.core;
+package com.ahsmus.court.core.enums;
 
 public enum ArenaState {
     PENDING,

@@ -2,6 +2,8 @@ package com.ahsmus.court.events;
 
 import com.ahsmus.court.Court;
 import com.ahsmus.court.core.CourtPlayer;
+import com.ahsmus.court.utils.ItemBuilder;
+import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -20,5 +22,11 @@ public class PlayerJoinListener implements Listener {
         Player player = event.getPlayer();
         CourtPlayer courtPlayer = new CourtPlayer(player);
         plugin.players.add(courtPlayer);
+
+        player.getInventory().clear();
+
+        ItemBuilder builder = new ItemBuilder(Material.CHEST);
+        builder.setName("Kit Selector");
+        player.getInventory().setItem(4, builder.build());
     }
 }

@@ -1,11 +1,12 @@
 package com.ahsmus.court.core;
 
+import com.ahsmus.court.core.enums.PlayerState;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Delegate;
 import org.bukkit.entity.Player;
 
-import static com.ahsmus.court.menus.SpawnItems.setSpawnInventory;
+import static com.ahsmus.court.SpawnItems.setSpawnInventory;
 
 
 @Getter

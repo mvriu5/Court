@@ -2,7 +2,7 @@ package com.ahsmus.court.events;
 
 import com.ahsmus.court.Court;
 import com.ahsmus.court.core.CourtPlayer;
-import com.ahsmus.court.core.PlayerState;
+import com.ahsmus.court.core.enums.PlayerState;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
