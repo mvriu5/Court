@@ -13,8 +13,12 @@ public class Arena {
 
     private final String name;
     private final List<Kit> compatibleKits;
-    private final Location spawn1;
-    private final Location spawn2;
+
+    @Setter
+    private Location spawn1;
+
+    @Setter
+    private Location spawn2;
 
     @Setter
     private ArenaState state;

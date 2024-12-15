@@ -20,14 +20,13 @@ public class PlayerRespawnListener implements Listener {
     public void onPlayerRespawn(PlayerRespawnEvent event) {
         Player player = event.getPlayer();
 
-        CourtPlayer courtPlayer = plugin.players.stream()
+        CourtPlayer courtPlayer = plugin.getPlayers().stream()
                 .filter(p -> p.player.getUniqueId().equals(player.getUniqueId()))
                 .findFirst()
                 .orElse(null);
 
         if (courtPlayer == null) return;
 
-        courtPlayer.inventoryManager.SetSpawnInventory();
-        courtPlayer.setState(PlayerState.LOBBY);
+        courtPlayer.setLobby();
     }
 }

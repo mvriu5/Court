@@ -31,10 +31,10 @@ public class ArenaCreationMenu extends Menu {
     @Override
     public void setMenuItems() {
         ItemBuilder diamond = new ItemBuilder(Material.DIAMOND_BLOCK);
-        diamond.setName(arena.name);
+        diamond.setName(arena.getName());
 
         ItemBuilder spawn1;
-        if (arena.spawn1 == null) {
+        if (arena.getSpawn1() == null) {
             spawn1 = new ItemBuilder(Material.BEDROCK);
             spawn1.setName("§8Spawn 1 not set");
         } else {
@@ -43,7 +43,7 @@ public class ArenaCreationMenu extends Menu {
         }
 
         ItemBuilder spawn2;
-        if (arena.spawn2 == null) {
+        if (arena.getSpawn2() == null) {
             spawn2 = new ItemBuilder(Material.BEDROCK);
             spawn2.setName("§8Spawn 2 not set");
         } else {
@@ -52,7 +52,7 @@ public class ArenaCreationMenu extends Menu {
         }
 
         ItemBuilder kits;
-        if (arena.compatibleKits.isEmpty()) {
+        if (arena.getCompatibleKits().isEmpty()) {
             kits = new ItemBuilder(Material.BOOK);
             kits.setName("§8Kits not set");
         } else {
@@ -76,11 +76,11 @@ public class ArenaCreationMenu extends Menu {
 
         switch (event.getSlot()) {
             case 1:
-                arena.spawn1 = player.getLocation();
+                arena.setSpawn1(player.getLocation());
                 player.sendMessage("§aSpawn 1 set!");
                 break;
             case 2:
-                arena.spawn2 = player.getLocation();
+                arena.setSpawn2(player.getLocation());
                 player.sendMessage("§aSpawn 2 set!");
                 break;
             case 3:
@@ -89,7 +89,7 @@ public class ArenaCreationMenu extends Menu {
                 kitSelectionMenu.open(player);
                 break;
             case 8:
-                if (arena.spawn1 == null || arena.spawn2 == null || arena.compatibleKits.isEmpty()) {
+                if (arena.getSpawn1() == null || arena.getSpawn2() == null || arena.getCompatibleKits().isEmpty()) {
                     player.sendMessage("§cPlease set all values before saving!");
                     return;
                 }

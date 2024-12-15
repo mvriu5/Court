@@ -21,7 +21,7 @@ public class InventoryClickListener implements Listener {
         Player player = (Player) event.getWhoClicked();
         Inventory inventory = event.getInventory();
 
-        CourtPlayer courtPlayer = plugin.players.stream()
+        CourtPlayer courtPlayer = plugin.getPlayers().stream()
                 .filter(p -> p.player.getUniqueId().equals(player.getUniqueId()))
                 .findFirst()
                 .orElse(null);

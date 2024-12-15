@@ -11,7 +11,7 @@ import java.util.List;
 public class KitManager {
 
     private final Court plugin;
-    public List<Kit> kits;
+    private final List<Kit> kits;
 
     public KitManager(Court plugin) {
         this.plugin = plugin;
@@ -20,7 +20,7 @@ public class KitManager {
 
     public Kit getKit(String name) {
         for (Kit kit : kits) {
-            if (kit.name.equals(name)) {
+            if (kit.getName().equals(name)) {
                 return kit;
             }
         }

@@ -12,7 +12,7 @@ import java.util.List;
 public class ArenaManager {
 
     private final Court plugin;
-    public List<Arena> arenas;
+    private final List<Arena> arenas;
 
     public ArenaManager(Court plugin) {
         this.plugin = plugin;
@@ -20,7 +20,7 @@ public class ArenaManager {
     }
 
     public void addArena(Arena arena) {
-        arena.state = ArenaState.AVAILABLE;
+        arena.setState(ArenaState.AVAILABLE);
         //db.saveArena(arena);
         arenas.add(arena);
     }
@@ -33,7 +33,7 @@ public class ArenaManager {
     public Arena getRandomArena() {
         List<Arena> availableArenas = new ArrayList<>();
         for (Arena arena : arenas) {
-            if (arena.state == ArenaState.AVAILABLE) {
+            if (arena.getState() == ArenaState.AVAILABLE) {
                 availableArenas.add(arena);
             }
         }

@@ -34,8 +34,8 @@ public class ArenaKitSelectionMenu extends Menu {
     @Override
     public void setMenuItems() {
         for (Kit kit : plugin.getKitManager().getKits()) {
-            ItemBuilder item = new ItemBuilder(kit.displayMaterial);
-            item.setName(kit.name);
+            ItemBuilder item = new ItemBuilder(kit.getDisplayMaterial());
+            item.setName(kit.getName());
             inventory.addItem(item.build());
         }
     }
@@ -51,18 +51,18 @@ public class ArenaKitSelectionMenu extends Menu {
 
             plugin.getKitManager().getKits()
                     .stream()
-                    .filter(kit -> Objects.equals(kit.name, item.getItemMeta().getDisplayName()))
+                    .filter(kit -> Objects.equals(kit.getName(), item.getItemMeta().getDisplayName()))
                     .findFirst()
-                    .ifPresent(selectedKit -> arena.compatibleKits.add(selectedKit));
+                    .ifPresent(selectedKit -> arena.getCompatibleKits().add(selectedKit));
 
         } else {
             item.removeEnchantment(Enchantment.LUCK);
 
             plugin.getKitManager().getKits()
                     .stream()
-                    .filter(kit -> Objects.equals(kit.name, item.getItemMeta().getDisplayName()))
+                    .filter(kit -> Objects.equals(kit.getName(), item.getItemMeta().getDisplayName()))
                     .findFirst()
-                    .ifPresent(selectedKit -> arena.compatibleKits.remove(selectedKit));
+                    .ifPresent(selectedKit -> arena.getCompatibleKits().remove(selectedKit));
         }
     }
 

@@ -9,9 +9,9 @@ import java.util.List;
 @Getter
 public class Kit {
 
-    public String name;
-    public List<ItemStack> items;
-    public Material displayMaterial;
+    private final String name;
+    private final List<ItemStack> items;
+    private final Material displayMaterial;
 
     public Kit(String name, List<ItemStack> items, Material displayMaterial) {
         this.name = name;

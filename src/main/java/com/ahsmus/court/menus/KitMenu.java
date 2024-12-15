@@ -29,8 +29,8 @@ public class KitMenu extends Menu {
     @Override
     public void setMenuItems() {
         for (Kit kit : plugin.getKitManager().getKits()) {
-            ItemBuilder item = new ItemBuilder(kit.displayMaterial);
-            item.setName(kit.name);
+            ItemBuilder item = new ItemBuilder(kit.getDisplayMaterial());
+            item.setName(kit.getName());
             inventory.addItem(item.build());
         }
     }
@@ -55,7 +55,7 @@ public class KitMenu extends Menu {
 
         plugin.getQueueManager().addPlayer(courtPlayer, kit);
         player.closeInventory();
-        player.sendMessage("You have joined the " + kit.name + " queue.");
+        player.sendMessage("You have joined the " + kit.getName() + " queue.");
     }
 
     @Override

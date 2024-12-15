@@ -25,14 +25,14 @@ public class EntityDamageListener implements Listener {
 
         Player player = (Player) entity;
 
-        CourtPlayer courtPlayer = plugin.players.stream()
+        CourtPlayer courtPlayer = plugin.getPlayers().stream()
                 .filter(p -> p.player.getUniqueId().equals(player.getUniqueId()))
                 .findFirst()
                 .orElse(null);
 
         if (courtPlayer == null) return;
 
-        if (courtPlayer.state == PlayerState.SPECTATING || courtPlayer.state == PlayerState.LOBBY) {
+        if (courtPlayer.getState() == PlayerState.SPECTATING || courtPlayer.getState() == PlayerState.LOBBY) {
             event.setCancelled(true);
         }
     }

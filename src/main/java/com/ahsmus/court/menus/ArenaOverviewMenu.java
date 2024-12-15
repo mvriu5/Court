@@ -31,8 +31,8 @@ public class ArenaOverviewMenu extends Menu {
     public void setMenuItems() {
         for (Arena arena : plugin.getArenaManager().getArenas()) {
             inventory.addItem(new ItemBuilder(Material.WOOL)
-                    .setName("§e" + arena.name)
-                    .setLore(List.of("§7Status: " + arena.state.name()))
+                    .setName("§e" + arena.getName())
+                    .setLore(List.of("§7Status: " + arena.getState().name()))
                     .build());
         }
     }

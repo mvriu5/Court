@@ -35,7 +35,7 @@ public class MenuManager implements Listener {
 
         Player player = (Player) event.getWhoClicked();
 
-        CourtPlayer courtPlayer = plugin.players.stream()
+        CourtPlayer courtPlayer = plugin.getPlayers().stream()
                 .filter(p -> p.player.getUniqueId().equals(player.getUniqueId()))
                 .findFirst()
                 .orElse(null);
@@ -56,7 +56,7 @@ public class MenuManager implements Listener {
 
         Player player = (Player) event.getPlayer();
 
-        CourtPlayer courtPlayer = plugin.players.stream()
+        CourtPlayer courtPlayer = plugin.getPlayers().stream()
                 .filter(p -> p.player.getUniqueId().equals(player.getUniqueId()))
                 .findFirst()
                 .orElse(null);
