@@ -85,8 +85,8 @@ public class ArenaCommand extends PlayerCommand {
             return false;
         }
 
-        if (arena.state == ArenaState.AVAILABLE) {
-            plugin.getArenaManager().arenas.removeIf(arena -> arena.name.equalsIgnoreCase(args[0]));
+        if (arena.getState() == ArenaState.AVAILABLE) {
+            plugin.getArenaManager().getArenas().removeIf(arena -> arena.getName().equalsIgnoreCase(args[0]));
             player.sendMessage("§aArena entfernt!");
             return true;
         } else {

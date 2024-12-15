@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/Court.iml" filepath="$PROJECT_DIR$/.idea/modules/Court.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/Court.main.iml" filepath="$PROJECT_DIR$/.idea/modules/Court.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/com.ahsmus.Court.main.iml" filepath="$PROJECT_DIR$/.idea/modules/com.ahsmus.Court.main.iml" />
     </modules>
   </component>
 </project>

@@ -1,18 +1,23 @@
 package com.ahsmus.court.core;
 
 import com.ahsmus.court.core.enums.ArenaState;
+import lombok.Getter;
+import lombok.Setter;
 import org.bukkit.Location;
 
 import java.util.ArrayList;
 import java.util.List;
 
+@Getter
 public class Arena {
 
-    public String name;
-    public ArenaState state;
-    public List<Kit> compatibleKits;
-    public Location spawn1;
-    public Location spawn2;
+    private final String name;
+    private final List<Kit> compatibleKits;
+    private final Location spawn1;
+    private final Location spawn2;
+
+    @Setter
+    private ArenaState state;
 
     public Arena(String name, Location spawn1, Location spawn2) {
         this.name = name;

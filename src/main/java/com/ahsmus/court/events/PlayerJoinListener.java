@@ -21,12 +21,7 @@ public class PlayerJoinListener implements Listener {
     public void onPlayerJoin(PlayerJoinEvent event) {
         Player player = event.getPlayer();
         CourtPlayer courtPlayer = new CourtPlayer(player);
-        plugin.players.add(courtPlayer);
-
-        player.getInventory().clear();
-
-        ItemBuilder builder = new ItemBuilder(Material.CHEST);
-        builder.setName("Kit Selector");
-        player.getInventory().setItem(4, builder.build());
+        plugin.getPlayers().add(courtPlayer);
+        courtPlayer.setLobby();
     }
 }

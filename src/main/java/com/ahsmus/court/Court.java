@@ -3,10 +3,7 @@ package com.ahsmus.court;
 import com.ahsmus.court.commands.ArenaCommand;
 import com.ahsmus.court.core.CourtPlayer;
 import com.ahsmus.court.events.*;
-import com.ahsmus.court.managers.ArenaManager;
-import com.ahsmus.court.managers.KitManager;
-import com.ahsmus.court.managers.MenuManager;
-import com.ahsmus.court.managers.QueueManager;
+import com.ahsmus.court.managers.*;
 import lombok.Getter;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -16,11 +13,17 @@ import java.util.List;
 @Getter
 public final class Court extends JavaPlugin {
 
+    //Todos: database
+    //Game events
+    //Kits erstellen
+    //Lobby spawnpoint
+
     public List<CourtPlayer> players;
     public ArenaManager arenaManager;
     public MenuManager menuManager;
     public KitManager kitManager;
     public QueueManager queueManager;
+    public GameManager gameManager;
 
     @Override
     public void onEnable() {
@@ -29,8 +32,10 @@ public final class Court extends JavaPlugin {
         menuManager = new MenuManager(this);
         kitManager = new KitManager(this);
         queueManager = new QueueManager(this);
+        gameManager = new GameManager(this);
 
         registerEvents();
+        registerCommands();
     }
 
     @Override

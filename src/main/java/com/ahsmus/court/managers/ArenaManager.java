@@ -30,4 +30,17 @@ public class ArenaManager {
         arenas.remove(arena);
     }
 
+    public Arena getRandomArena() {
+        List<Arena> availableArenas = new ArrayList<>();
+        for (Arena arena : arenas) {
+            if (arena.state == ArenaState.AVAILABLE) {
+                availableArenas.add(arena);
+            }
+        }
+        if (availableArenas.isEmpty()) {
+            return null;
+        }
+        return availableArenas.get((int) (Math.random() * availableArenas.size()));
+    }
+
 }

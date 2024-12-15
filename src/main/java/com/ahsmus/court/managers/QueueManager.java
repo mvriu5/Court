@@ -3,36 +3,38 @@ package com.ahsmus.court.managers;
 import com.ahsmus.court.Court;
 import com.ahsmus.court.core.CourtPlayer;
 import com.ahsmus.court.core.Kit;
+import com.ahsmus.court.core.Match;
 import lombok.Getter;
 
-import java.util.LinkedList;
-import java.util.Objects;
-import java.util.Queue;
+import java.util.*;
 
 @Getter
 public class QueueManager {
 
     private final Court plugin;
-    public Queue<CourtPlayer> builduhcQueue;
-    public Queue<CourtPlayer> soupQueue;
+    private final Map<Kit, Queue<CourtPlayer>> queues;
 
     public QueueManager(Court plugin) {
         this.plugin = plugin;
-        this.builduhcQueue = new LinkedList<>();
-        this.soupQueue = new LinkedList<>();
+        this.queues = new HashMap<>();
     }
 
     public void addPlayer(CourtPlayer player, Kit kit) {
-        if (Objects.equals(kit.name, "BuildUHC")) {
-            builduhcQueue.add(player);
-        }
-        if (Objects.equals(kit.name, "Soup")) {
-            soupQueue.add(player);
+        Queue<CourtPlayer> queue = queues.computeIfAbsent(kit, k -> new LinkedList<>());
+        queue.add(player);
+
+        if (queue.size() >= 2) {
+            CourtPlayer p1 = queue.poll();
+            CourtPlayer p2 = queue.poll();
+
+            Match match = new Match(plugin, p1, p2, kit);
+            plugin.getGameManager().addMatch(match);
         }
     }
 
     public void removePlayer(CourtPlayer player) {
-        builduhcQueue.stream().filter(p -> p.equals(player)).forEach(builduhcQueue::remove);
-        soupQueue.stream().filter(p -> p.equals(player)).forEach(soupQueue::remove);
+        for(Queue<CourtPlayer> queue : queues.values()) {
+            queue.remove(player);
+        }
     }
 }
